@@ -4,13 +4,12 @@ import com.github.netspook.fcg.engine.FreemarkerEngine;
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
 
-public class FreemarkerGenerator {
+public class FreemarkerGenerator implements Generator {
 
     private Configuration engine = FreemarkerEngine.getInstance();
 
@@ -56,7 +55,7 @@ public class FreemarkerGenerator {
         return writer;
     }
 
-    public void run() throws IOException, TemplateException {
+    public void run() throws Exception {
 
         StringWriter stringWriter = new StringWriter();
         template.process(parameters, stringWriter);
